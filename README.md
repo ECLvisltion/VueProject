@@ -2,11 +2,6 @@
 Vue로 babylon.js도 해먹고 typescript도 쓰고 다써먹어보기
 
 
-## Project setup
-```
-npm install
-```
-
 ### 디버그용 로컬서버 빨리열기
 ```
 npm run serve
@@ -17,7 +12,7 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### 코드 검사, 수정
 ```
 npm run lint
 ```
