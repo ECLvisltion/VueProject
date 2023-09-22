@@ -1,12 +1,10 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from "vue";
 const titleClass = ref("홍길동ABC");
 
 </script>
 
 <template>
-
-
   {{ titleClass }}
 </template>
 
@@ -18,10 +16,9 @@ const titleClass = ref("홍길동ABC");
 
 #app {
   font-family: "NanumBarunGothic";
-  font-size: 30px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 60px;
+  margin: 0;
 }
 </style>
