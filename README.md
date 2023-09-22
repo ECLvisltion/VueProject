@@ -1,6 +1,5 @@
 # VueProject
-Vue로 Web3D도 해먹고 타입스크립트도 쓰고 다써먹어보기
-
+Vue로 babylon.js도 해먹고 typescript도 쓰고 다써먹어보기
 
 
 ## Project setup
@@ -8,12 +7,12 @@ Vue로 Web3D도 해먹고 타입스크립트도 쓰고 다써먹어보기
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 디버그용 로컬서버 빨리열기
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 빌드하기
 ```
 npm run build
 ```
