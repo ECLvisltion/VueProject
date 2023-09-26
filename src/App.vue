@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { createScene } from "./scenes/TestScene";
+import { createScene } from "./scenes/mainScene";
 const titleClass = ref("홍길동ABC");
 
 const bjsCanvas = ref(null);
@@ -36,4 +36,4 @@ body {
   width: 100%;
   height: 100vh;
 }
-</style>
+</style>./scenes/mainScene
