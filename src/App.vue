@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { createScene } from "./scenes/mainScene";
-const titleClass = ref("홍길동ABC");
 
 const bjsCanvas = ref(null);
 
@@ -14,7 +13,6 @@ onMounted(() => {
 
 <template>
   <canvas ref="bjsCanvas" class="bjsCanvas" />
-  {{ titleClass }}
 </template>
 
 <style>
@@ -25,6 +23,7 @@ onMounted(() => {
 
 body {
   margin: 0;
+  padding: 0;
 }
 #app {
   font-family: "NanumBarunGothic";
