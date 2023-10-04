@@ -35,7 +35,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/scenes/mainScene.ts"  ],
+, "src/scripts/mainScene.ts"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { createScene } from "./scenes/mainScene";
+import { createScene } from "./scripts/mainScene";
 
 const bjsCanvas = ref(null);
 
@@ -35,4 +35,4 @@ body {
   width: 100%;
   height: 100vh;
 }
-</style>./scenes/mainScene
+</style>./scenes/mainScene./scripts/mainScene
