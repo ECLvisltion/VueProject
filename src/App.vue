@@ -6,7 +6,7 @@ const bjsCanvas = ref(null);
 
 onMounted(() => {
     if (bjsCanvas.value) {
-    createScene(bjsCanvas.value);
+      createScene(bjsCanvas.value);
   }
 });
 </script>
