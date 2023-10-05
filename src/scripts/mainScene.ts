@@ -9,6 +9,15 @@ import "@babylonjs/loaders";
 import { AdvancedDynamicTexture, Button } from "@babylonjs/gui";
 
 
+class ShaderObject extends TransformNode {
+    constructor (name: string, scene: Scene, parent: TransformNode) {
+        super(name, scene);
+        super.setParent(parent);
+        this.position = parent.position;
+    }
+}
+
+
 const cameraTargets: TransformNode[] = []; // 카메라 이동 위치값 배열
 let cameraParent: TransformNode;
 let beforeTransform: TransformNode;
@@ -102,7 +111,7 @@ function InitObject(scene: Scene, advancedTexture: AdvancedDynamicTexture)
   temp.parent = sphere;
   temp.position = new Vector3(2, 2, -5);
   temp.rotationQuaternion = new Quaternion();
-  temp.lookAt(new Vector3(-2, 0, 0));
+  temp.lookAt(new Vector3(2, 0, 0));
   cameraTargets.push(temp);
   // 구체 버튼
   const sphereButton = Button.CreateImageOnlyButton("sphere-button", "./images/yellowCircle64.png");
@@ -122,12 +131,13 @@ function InitObject(scene: Scene, advancedTexture: AdvancedDynamicTexture)
   material_cylinder.diffuseColor = Color3.Blue();
   cylinder.material = material_cylinder;
   cylinder.position = new Vector3(-4, 1, 1);
+  cylinder.addRotation(0, Math.PI * 1.5, 0);
   // 실린더 노드
   temp = new TransformNode("cylinderNode");
   temp.parent = cylinder;
   temp.position = new Vector3(2, 2, -5);
   temp.rotationQuaternion = new Quaternion();
-  temp.lookAt(new Vector3(-2, 0, 0));
+  temp.lookAt(new Vector3(2, 0, 0));
   cameraTargets.push(temp);
   // 실린더 버튼
   const cylinderButton = Button.CreateImageOnlyButton("cylinder-button", "./images/grayCircle64.png");
@@ -149,7 +159,14 @@ function InitObject(scene: Scene, advancedTexture: AdvancedDynamicTexture)
     human.name = "__humanRoot__";
     human.id = "__humanRoot__";
     human.position = new Vector3(5, 0, -3);
-    human.lookAt(Vector3.Zero());
+    human.lookAt(Vector3.Zero(), Math.PI, 0, 0);
+    // 사람 노드
+    temp = new TransformNode("humanNode");
+    temp.parent = human!;
+    temp.position = new Vector3(2, 2, 5);
+    temp.rotationQuaternion = new Quaternion();
+    temp.lookAt(new Vector3(2, 1, 0), 0, 0, Math.PI);
+    cameraTargets.push(temp);
     // 사람 버튼
     const humanButton = Button.CreateImageOnlyButton("human-button", "./images/blueCircle64.png");
     humanButton.width = "32px";
@@ -157,18 +174,14 @@ function InitObject(scene: Scene, advancedTexture: AdvancedDynamicTexture)
     humanButton.color = "white";
     humanButton.thickness = 0;
     advancedTexture.addControl(humanButton);
-    humanButton.linkWithMesh(human);   
+    humanButton.linkWithMesh(human!);   
     humanButton.linkOffsetX = "96px";
+    humanButton.linkOffsetY = "-32px";
     // 구체 클릭 시 상호작용
     humanButton.onPointerUpObservable.add(function() { alert("사람"); });
   });
-  // 사람 노드
-  temp = new TransformNode("humanNode");
-  temp.parent = human!;
-  temp.position = new Vector3(2, 2, -5);
-  temp.rotationQuaternion = new Quaternion();
-  temp.lookAt(new Vector3(-2, 0, 0));
-  cameraTargets.push(temp);
+
+  console.log(cameraTargets);
 }
 // 인풋 이벤트
 function InputEvent(canvasElement: Element, camera: FreeCamera)
@@ -248,7 +261,8 @@ function MoveTarget(changeTargetNumber: number)
   dragPosition = Vector2.Zero();
   currentTarget = changeTargetNumber;
   beforeTransform.position = cameraParent.position;
-  beforeTransform.rotationQuaternion = cameraParent.rotationQuaternion;
+  beforeTransform.rotationQuaternion =
+    cameraParent.rotationQuaternion!.fromRotationMatrix(cameraParent.computeWorldMatrix(true));
 
   lerpCount = 0;
 }
