@@ -4,9 +4,11 @@ import { createScene } from "./scripts/mainScene";
 
 const bjsCanvas = ref(null);
 
-onMounted(() => {
-    if (bjsCanvas.value) {
-      createScene(bjsCanvas.value);
+onMounted(() =>
+{
+  if (bjsCanvas.value)
+  {
+    createScene(bjsCanvas.value);
   }
 });
 </script>
@@ -16,23 +18,28 @@ onMounted(() => {
 </template>
 
 <style>
-@font-face {
+@font-face
+{
   font-family: "NanumBarunGothic";
   src: url("./assets/fonts/NanumBarunGothic.otf");
 }
 
-body {
+body
+{
   margin: 0;
   padding: 0;
 }
-#app {
+#app
+{
   font-family: "NanumBarunGothic";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-.bjsCanvas {
+.bjsCanvas
+{
   width: 100%;
   height: 100vh;
+  outline: none;
 }
-</style>./scenes/mainScene./scripts/mainScene
+</style>./scripts/mainScene

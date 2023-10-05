@@ -298,6 +298,15 @@ function MoveTarget(changeTargetNumber: number)
     cameraParent.rotationQuaternion!.fromRotationMatrix(cameraParent.computeWorldMatrix(true));
 
   lerpCount = 0;
+
+  if (changeTargetNumber == 0)
+  {
+    document.querySelector("body")!.style.overflow = "auto";
+  }
+  else
+  {
+    document.querySelector("body")!.style.overflow = "hidden";
+  }
 }
 
 // 동적 화면 UI
