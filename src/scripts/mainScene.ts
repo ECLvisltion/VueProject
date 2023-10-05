@@ -7,7 +7,7 @@ import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
 import "@babylonjs/loaders";
 import { AdvancedDynamicTexture, Button, Control, Image } from "@babylonjs/gui";
-import { ParentPositioningTransformNode } from "./ParentPositioningTransformNode";
+//import { TransformNode_pos } from "./ParentPositioningTransformNode";
 
 
 const cameraTargets: TransformNode[] = []; // 카메라 이동 위치값 배열
@@ -218,8 +218,8 @@ function InitObject(scene: Scene, advancedTexture: AdvancedDynamicTexture)
   frameImage.sliceTop = 128;
   frameImage.sliceRight = 896;
   frameImage.sliceBottom = 896;
-  frameImage.width = "100%";
-  frameImage.height = "100%";
+  frameImage.width = "101%";
+  frameImage.height = "101%";
   frameImage.zIndex = 0;
   advancedTexture.addControl(frameImage);
 }
@@ -319,6 +319,7 @@ function UI(canvasElement: Element)
       targetButtons[i].alpha > 0.1 ? targetButtons[i].alpha -= 0.05 : targetButtons[i].alpha = 0;
     }
     descriptionImage.alpha < 0.9 ? descriptionImage.alpha += 0.05 : descriptionImage.alpha = 1;
+    frameImage.alpha > 0.1 ? frameImage.alpha -= 0.05 : frameImage.alpha = 0;
   }
   else
   {
@@ -335,6 +336,7 @@ function UI(canvasElement: Element)
       }
     }
     descriptionImage.alpha > 0.1 ? descriptionImage.alpha -= 0.05 : descriptionImage.alpha = 0;
+    frameImage.alpha < 0.9 ? frameImage.alpha += 0.05 : frameImage.alpha = 1;
   }
 }
 
